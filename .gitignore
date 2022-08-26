@@ -2,3 +2,4 @@
 src/i*
 out.rs
 out
+Makefile
