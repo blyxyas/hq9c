@@ -1,1 +1,4 @@
 /target
+src/i*
+out.rs
+out
