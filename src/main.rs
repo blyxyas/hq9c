@@ -1,6 +1,12 @@
 use clap::Parser;
+// use std::{thread, time};
+
+use tempfile::{tempdir_in};
+
 use std::fs::{self, File};
 use std::io::prelude::*;
+// use std::path::Path;
+use std::process::Command;
 
 #[derive(Parser, Debug)]
 #[clap(name = "GQ9+c")]
@@ -54,7 +60,30 @@ fn main() -> std::io::Result<()> {
     }
 
     result.push("}");
-    let mut file = File::create(args.outputfile)?;
-    file.write_all(result.join("\n\t").as_bytes())?;
+
+    let dir = tempdir_in("out")?;
+
+    let dir_path = dir.path();
+    let mut file = File::create(dir_path.join("out.rs"))?;
+    writeln!(file, "{}", result.join("\n\t"))?;
+
+    // if Path::new(dir_path).exists() {
+    // 	println!("Exists")
+    // }
+    // if Path::new(&dir_path.join("out.rs")).exists() {
+    // 	println!("Exists")
+    // }
+
+    // Compile that new Rust tempfile.
+    let compile_out = match Command::new(format!(
+			"rustc -o {} {}",
+			args.outputfile,
+			dir_path.join("out.rs").to_string_lossy()
+		))
+		.status() {
+		Ok(_) => {},
+		Err(e) => {println!("{}", e)},
+	};
+
     Ok(())
 }
