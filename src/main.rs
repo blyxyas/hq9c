@@ -40,6 +40,7 @@ fn main() -> std::io::Result<()> {
     // Read file to string
     let data = fs::read_to_string(args.inputfile).expect("Couldn't open the file");
     let quine: &str = &format!("println!(\"{}\");", data);
+	let currentbottle = &format!("let mut current = {};", args.bottlesno);
 
     // 256 / 4 = 64 so:
     // 1 = 64
@@ -57,7 +58,8 @@ fn main() -> std::io::Result<()> {
 					result.push(quine);
 				},
 				'9' => {
-					result.push("let mut current = 99; while current >= 1 { println!(\"{} bottles of beer\\nyou take one down, pass it around,\\n{} bottles of beer on the wall.\\n\", current, current - 1); current-= 1; }")
+					result.push(currentbottle);
+					result.push("while current >= 1 { println!(\"{} bottles of beer\\nyou take one down, pass it around,\\n{} bottles of beer on the wall.\\n\", current, current - 1); current-= 1; }")
 				},
 				'+' => {
 					result.push("accumulator += 1;")

@@ -65,7 +65,7 @@ No, the accumulator **can't be printed**, but that doesn't make it a less valuab
 
 Even more than that. I could **intercept** the very specific RAM address of the accumulator and read its value while the program takes place. **Then what?! EH? Jörg W Mittag from Stack Overflow?!**
 
-# Installation & Usage
+# Installation
 
 I hope you read all of the above information, because it's a highly valuable read, that I left *just for you.*
 
@@ -93,7 +93,27 @@ make
 ```
 
 This will create the executable into `.target/release/hq9c`
-Now you could create a symlink in your `/usr/bin` directory, or maybe you just want to use it a local project and not on a global scale (Thought it's highly recommended).
+Now you could move the executable to `/usr/bin`, or maybe you just want to use it a local project and not on a global scale (Thought it's highly recommended).
+
+# Usage
+
+To get the help message use the following command:
+
+```bash
+hq9c --help
+```
+
+To compile a file use:
+
+```
+hq9c -o <OUTPUTFILE> <INPUTFILE>
+```
+
+```
+hq9c -o nasa_artemis_source nasa_artemis_source.hq9p
+```
+
+You can use any extension you want, but for the HQ9+22 spec. The recommended extension is `hq9p` or `hq9`
 
 # Inspiration
 
