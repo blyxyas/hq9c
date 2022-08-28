@@ -1,8 +1,8 @@
 # HQ9+ Compiler
 
-[HQ9+](https://esolangs.org/wiki/HQ9%2B) is a programming language created by [Cliff L. Biffle.](https://cliffle.com/) That sadly [didn't had a non-minecraft-based compiler](https://www.spigotmc.org/resources/hq9-compiler.38783/) (I think). Critics around the world thought about this but everyone was afraid of not creating an engineering marvel, today that will change.
+HQ9c (Or HQ9+ Compiler) is a blockchain-based NFT minting AI machine-learning cloud infraestructure for the compiling of the great programming language HQ9+ written in Rust using a C# FFI written in ASM.
 
-HQ9c is a HQ9+ compiler suited for all your non Turing Complete tasks, like printing "Hello world!", with new implementations (This is the HQ9+22 spec.) You can submit an issue or pull request (with a "please" and a "thanks") asking for me to add another feature to HQ9+22 and implement it in the vastly complex compiler, your inmortal minds couldn't comprehend it.
+Unlike other tools I made, this actually works! And it produces an executable through the Rust compiler to LLVM, then to C, then to Python, finally to Java 🤮 bytecode and to an executable.
 
 # How does it work, master Shifu?
 
@@ -97,4 +97,4 @@ Now you could create a symlink in your `/usr/bin` directory, or maybe you just w
 
 # Inspiration
 
-I want to thank my family for this genious idea that I had. I also want to thank my giant fat cat *Keepy* and my mini skinny cat *Mina*, and, how'd I forget, I really want to thank the creator of this marvelous language [Cliff L. Biffle.](https://cliffle.com/) and [this another implementation](https://github.com/LucasLarson/HQ9) (this time it's an interpreter.) by Lucas l'Arson for giving me the idea for creating a compiler.
+I want to thank my family for this genious idea that I had. I also want to thank my giant fat cat *Keepy* and my mini skinny cat *Mina*, and, how'd I forget, I really want to thank the creator of this marvelous language [Cliff L. Biffle.](https://cliffle.com/) and [this another implementation](https://github.com/LucasLarson/HQ9) (this time it's an interpreter.) by Lucas Larson for giving me the idea for creating a compiler.
