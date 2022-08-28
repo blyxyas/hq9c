@@ -8,7 +8,7 @@ Unlike other tools I made, this actually works! And it produces an executable th
 
 The highly complicated HQ9+ programming language isn't easy to understand, but I'll do my best to explain it in a way your mortal mind can understand.
 
-The HQ9+ programming language has 4 characters:
+The HQ9+ programming language has 4 characters, and all other characters (included their lowercase versions) are treated as characters.
 
 * H
 * Q
