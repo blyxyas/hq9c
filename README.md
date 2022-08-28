@@ -113,8 +113,18 @@ hq9c -o <OUTPUTFILE> <INPUTFILE>
 hq9c -o nasa_artemis_source nasa_artemis_source.hq9p
 ```
 
+You can also change some parameters, and it will vastly improve the experience.
+
+```
+hq9c -o nasa_artemis_source -b 419 nasa_artemis_source.hq9p
+```
+
+*(Will change the number of bottles thrown at the wall)*
+
 You can use any extension you want, but for the HQ9+22 spec. The recommended extension is `hq9p` or `hq9`
 
 # Inspiration
 
 I want to thank my family for this genious idea that I had. I also want to thank my giant fat cat *Keepy* and my mini skinny cat *Mina*, and, how'd I forget, I really want to thank the creator of this marvelous language [Cliff L. Biffle.](https://cliffle.com/) and [this another implementation](https://github.com/LucasLarson/HQ9) (this time it's an interpreter.) by Lucas Larson for giving me the idea for creating a compiler.
+
+This is all a joke, don't take it too serious. Tested with Arch Linux.
