@@ -1,7 +1,5 @@
 use clap::Parser;
-// use std::{thread, time};
-
-use tempfile::{tempdir_in};
+use tempfile::tempdir;
 
 use std::fs::{self, File};
 use std::io::prelude::*;
@@ -25,6 +23,15 @@ struct Args {
 
     #[clap(short, default_value = "true")]
     verbosity: bool,
+
+	#[clap(short, default_value = "false")]
+    debug: bool,
+
+	#[clap(short, default_value = "false i think")]
+    kitchen_mode: bool,
+
+	#[clap(short, default_value = "false")]
+    actually_built_in_java: bool,
 }
 
 fn main() -> std::io::Result<()> {
@@ -40,7 +47,7 @@ fn main() -> std::io::Result<()> {
     // 3 = 192
     // 4 = 255
     let mut result: Vec<&str> = Vec::new();
-    result.push("fn main() {\nlet mut accumulator = 0;");
+    result.push("fn main() {\n\tlet mut accumulator = 0;");
     for ch in data.chars() {
         match ch {
 				'H' => {
@@ -61,29 +68,26 @@ fn main() -> std::io::Result<()> {
 
     result.push("}");
 
-    let dir = tempdir_in("out")?;
+	let dir = tempdir()?;
+	let file_path = &dir.path().join("out.rs").as_os_str().to_str().unwrap().to_string();
 
-    let dir_path = dir.path();
-    let mut file = File::create(dir_path.join("out.rs"))?;
+    let mut file = File::create(file_path).expect("Couldn't create");
     writeln!(file, "{}", result.join("\n\t"))?;
 
-    // if Path::new(dir_path).exists() {
-    // 	println!("Exists")
-    // }
-    // if Path::new(&dir_path.join("out.rs")).exists() {
-    // 	println!("Exists")
-    // }
-
     // Compile that new Rust tempfile.
-    let compile_out = match Command::new(format!(
-			"rustc -o {} {}",
-			args.outputfile,
-			dir_path.join("out.rs").to_string_lossy()
-		))
+    let _compile_out = match Command::new(format!(
+			"rustc"
+		)).args([file_path, "-o", &args.outputfile])
 		.status() {
-		Ok(_) => {},
-		Err(e) => {println!("{}", e)},
+		Ok(_) => { Ok(()) },
+		Err(e) => { println!("{}", e); Err(()) },
 	};
+
+	if std::env::consts::OS == "windows" {
+		let _ = Command::new("del").args(&["/f", file_path]).status();
+	} else {
+		let _ = Command::new("rm").args(&["-r", file_path]);
+	}
 
     Ok(())
 }

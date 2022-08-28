@@ -3,4 +3,4 @@ src/i*
 out.rs
 out
 Makefile
-*.hq9p
+try*
