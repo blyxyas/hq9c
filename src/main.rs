@@ -64,7 +64,7 @@ fn main() -> std::io::Result<()> {
 				'+' => {
 					result.push("accumulator += 1;")
 				}
-				_ => {},
+				_ => {continue;},
 			}
     }
 
